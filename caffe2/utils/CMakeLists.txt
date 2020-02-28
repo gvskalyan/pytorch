@@ -38,6 +38,7 @@ list(APPEND Caffe2_CPU_SRCS
 # thread pool supports Windows.
 if (NOT MSVC)
   add_definitions(-DUSE_INTERNAL_THREADPOOL_IMPL)
+  set_source_files_properties(pthreadpool_new_if_impl.c PROPERTIES COMPILE_FLAGS -fno-openmp) 
   set(Caffe2_CPU_SRCS ${Caffe2_CPU_SRCS}
           utils/threadpool/pthreadpool.cc
           utils/threadpool/pthreadpool_impl.cc
